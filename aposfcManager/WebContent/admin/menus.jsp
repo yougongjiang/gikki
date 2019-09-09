@@ -80,9 +80,9 @@ body {
 								<td class="line_table" align="center"><span
 									class="left_txt">${menus.sums1 }</span></td>
 								<td class="line_table" align="center"><a
-									href="menus_update.jsp">修改</a></td>
+									href="{pageContext.request.contextPath }/menusServlet?action=findbyid&&id=${menus.id  }">修改</a></td>
 								<td class="line_table" align="center"><a
-									href="#">删除</a></td>
+									href="${pageContext.request.contextPath }/menusServlet?action=delmenus&&id=${menus.id }">删除</a></td>
 							</tr>
                             </c:forEach>
 
