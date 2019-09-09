@@ -24,4 +24,18 @@ public interface IUsersDao {
 	 * @return
 	 */
 	int update(Users user);
+	/**
+	 * 
+	 * 方法描述：注册
+	 * @param users
+	 * @return 影响行数
+	 */
+	int reg(Users users);
+	/**
+	 * 
+	 * 方法描述：通过name查询
+	 * @param name
+	 * @return 用户信息
+	 */
+	Users findByName(String name);
 }
