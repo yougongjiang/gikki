@@ -97,34 +97,45 @@ body {
 							</tr>
 							</c:forEach>
 							<tr>
-								<td class="line_table" align="center" colspan="12" height="20">
-								<span class="left_bt2">第<c:out value="${page.curPage}"></c:out>页
-										&nbsp;&nbsp;共<c:out value="${page.totalPage}"></c:out>页
-								</span>&nbsp;&nbsp; 
-								    <c:choose>
-								    <c:when test="${page.curPage eq 1}"><span style="font-size: 13px;color:gray">[首页]</span></c:when>
-								    <c:otherwise>
-								    <a href="${pageUrl}&curpage=1">[首页]</a>
-								    </c:otherwise>
-								    </c:choose>
-								    <c:choose>
-								    <c:when test="${page.curPage eq page.totalPage}"><span style="font-size: 13px;color:gray">[尾页]</span></c:when>
-								    <c:otherwise>
-								    <a href="${pageUrl}&curpage=${page.totalPage}">[尾页]</a>&nbsp;&nbsp;
-								    </c:otherwise>
-								    </c:choose>
-								    <c:choose>
-								    <c:when test="${page.curPage eq 1}"><span style="font-size: 13px;color:gray">[上一页]</span></c:when>
-								    <c:otherwise>
-								    <a href="${pageUrl}&curpage=${page.curPage-1}">[上一页]</a>
-								    </c:otherwise>
-								    </c:choose> 
-								    <c:choose>
-								    <c:when test="${page.curPage eq page.totalPage}"><span style="font-size: 13px;color:gray">[下一页]</span></c:when>
-								    <c:otherwise>
-									<a href="${pageUrl}&curpage=${page.curPage+1}">[下一页]</a>
-									</c:otherwise>
-									</c:choose>
+								<td class="line_table" align="center" colspan="11" height="20">
+									<span class="left_bt2">第${page.curPage }页
+									 &nbsp;&nbsp;共${page.totalPage }页 </span>&nbsp;&nbsp;
+									 <c:choose>
+									 <c:when test="${page.curPage eq 1 }">
+									 <span style="font-size:12px; color:gray">[首页]</span>
+									 </c:when>
+									 <c:otherwise>
+									 <a href="${pageContext.request.contextPath}/ordersServlet?action=all&&curPage=1">[首页]</a>
+									 </c:otherwise>
+									 </c:choose>
+									
+									<c:choose>
+									 <c:when test="${page.curPage eq page.totalPage }">
+									 <span style="font-size:12px; color:gray">[尾页]</span>
+									 </c:when>
+									 <c:otherwise>
+									 <a href="${pageContext.request.contextPath}/ordersServlet?action=all&&curPage=${page.totalPage}">[尾页]</a>
+									 </c:otherwise>
+									 </c:choose>
+									 &nbsp;&nbsp;
+									 <c:choose>
+									 <c:when test="${page.curPage eq 1 }">
+									 <span style="font-size:12px; color:gray">[上一页]</span>
+									 </c:when>
+									 <c:otherwise>
+									 <a href="${pageContext.request.contextPath}/ordersServlet?action=all&&curPage=${page.curPage-1}">[上一页]</a>
+									 </c:otherwise>
+									 </c:choose>
+									  
+									  <c:choose>
+									 <c:when test="${page.curPage eq page.totalPage }">
+									 <span style="font-size:12px; color:gray">[下一页]</span>
+									 </c:when>
+									 <c:otherwise>
+									 <a href="${pageContext.request.contextPath}/ordersServlet?action=all&&curPage=${page.curPage+1}">[下一页]</a>
+									 </c:otherwise>
+									 </c:choose>
+									
 									
 								</td>
 							</tr>
