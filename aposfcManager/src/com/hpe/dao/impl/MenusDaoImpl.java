@@ -65,6 +65,33 @@ public class MenusDaoImpl implements IMenusDao {
     	}catch(Exception e){
     		e.printStackTrace();
     	}
-    	return result;
+    		return result;
+	}
+	@Override
+	public int deleMenus(int id) {
+		String sql="DELETE FROM menus WHERE id=?";
+		Object[] param={id};
+		int result=0;
+		try {
+			result=dbutil.execute(sql, param);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	@Override
+	public int updateMenus(Menus menus) {
+		String sql="update menus set name=?,burden=?,price=?,price1=?,brief=?,typeid=?,imgpath=? where id=?";
+		Object[] param={ menus.getName(),menus.getBurden(),menus.getPrice(),menus.getPrice1(),menus.getBrief(),menus.getTypeid(),menus.getImgpath(),menus.getId()};
+		int result=0;
+		try {
+			result=dbutil.execute(sql, param);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
