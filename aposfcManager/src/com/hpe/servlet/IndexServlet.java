@@ -17,6 +17,8 @@ import com.hpe.service1.IMenusService;
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        private IMenusService menusService=new MenusServiceImpl();
+	private IHotSellItemService hotSellItemService=new HotSellItemServiceImpl();
+
     /**
      * @see HttpServlet#HttpServlet()
      */
