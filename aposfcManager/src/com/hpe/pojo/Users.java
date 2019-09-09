@@ -98,7 +98,21 @@ public class Users {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
+	//id通过get获取
+	public Users( String name, String pwd, String realname, String sex, String age, String card, String address,
+			String phone, String email, String code) {
+		super();
+		this.name = name;
+		this.pwd = pwd;
+		this.realname = realname;
+		this.sex = sex;
+		this.age = age;
+		this.card = card;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
+		this.code = code;
+	}
 	public Users(int id, String name, String pwd, String realname, String sex, String age, String card, String address,
 			String phone, String email, String code, String type) {
 		super();
