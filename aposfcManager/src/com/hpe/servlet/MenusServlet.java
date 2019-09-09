@@ -58,7 +58,16 @@ public class MenusServlet extends HttpServlet {
 			updatemenus(request, response);
 		}else if(action.equals("findbyid")){
 			findById(request, response);
+		}else if(action.equals("findHotById")){
+			find(request, response);
 		}
+	}	
+	protected void find(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 获取id
+		int id = Integer.parseInt(request.getParameter("id"));
+		Menus menus=menusService.getMenusById(id);
+		request.setAttribute("menus", menus);
+		request.getRequestDispatcher("/qiantaiow.jsp").forward(request, response);
 	}
 	protected void MenusPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
