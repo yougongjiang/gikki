@@ -51,6 +51,12 @@ public class MenusServlet extends HttpServlet {
 			addMenus(request,response);
 		}else if(action.equals("findTypeAll")){
 			findTypeAll(request,response);
+		}else if(action.equals("delmenus")){
+			delmenus(request, response);
+		}else if(action.equals("update")){
+			updatemenus(request, response);
+		}else if(action.equals("findbyid")){
+			findById(request, response);
 		}
 	}
 	protected void MenusPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -125,5 +131,86 @@ public class MenusServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+//修改时用于回险
+	protected void findById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//获取id
+		int id=Integer.parseInt(request.getParameter("id"));
+		Menus menus=menusService.getMenusById(id);
+		request.setAttribute("menus", menus);
+		List<Types> list=typesService.getTypesAll();
+		request.setAttribute("types", list);
+		request.getRequestDispatcher("/admin/menus_update.jsp").forward(request, response);
+	}
+	
+	protected void updatemenus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       PrintWriter out=response.getWriter();
+		
+		//1.创建对象
+		SmartUpload smartUpload=new SmartUpload();
+		//2.执行上传初始化
+		smartUpload.initialize(this.getServletConfig(), request, response);
+		try {
+			//3.执行文件上传
+			smartUpload.upload();
+			//4.获取参数
+			String name=smartUpload.getRequest().getParameter("name");
+			String id=smartUpload.getRequest().getParameter("id");
+			String burden=smartUpload.getRequest().getParameter("burden");
+			String price=smartUpload.getRequest().getParameter("price");
+			String price1=smartUpload.getRequest().getParameter("price1");
+			String brief=smartUpload.getRequest().getParameter("brief");
+			String typeid=smartUpload.getRequest().getParameter("typeid");
+			//获取上传文件
+			SmartFile file=smartUpload.getFiles().getFile(0);//从上传文件中获取第一个
+			//获取文件名
+			String imgpath="img/"+file.getFileName();
+			if(id==null||id.equals("")){
+				id="0";
+			}
+			int id1=Integer.parseInt(id);
+			Menus menus=new Menus(id1,name, typeid, burden, brief, price, price1, imgpath);
+			int result=menusService.updateMenus(menus);
+			if(result==1){
+				//5.执行保存
+				smartUpload.save("/img");
+				out.write("<script>"
+						+"alert('修改成功!');"
+						+"window.location.href='"+request.getContextPath()+"/menusServlet?action=all';"
+						+"</script>");
+				}else if(result==-1){
+					out.write("<script>"
+						    +"alert('菜名重复!');"
+							+"window.location.href='"+request.getContextPath()+"/admin/menus_update';"
+							+"</script>");
+				}else{
+					out.write("<script>"
+							+"alert('修改失败!');"
+							+"window.location.href='"+request.getContextPath()+"/admin/menus_update';"
+							+"</script>");
+					}
+		} catch (SmartUploadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	protected void delmenus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out=response.getWriter();
+		
+		int id=Integer.parseInt(request.getParameter("id"));
+		int result=menusService.deleMenus(id);
+		if(result==1){
+			out.write("<script>"
+					+"alert('删除成功!');"
+					+"window.location.href='"+request.getContextPath()+"/menusServlet?action=all';"
+					+"</script>");
+			}else{
+			 out.write("<script>"
+						+"alert('删除失败!');"
+						+"window.location.href='"+request.getContextPath()+"/admin/menus.jsp';"
+						+"</script>");
+				}
+		
+	}
 }
