@@ -40,4 +40,19 @@ public interface IMenusDao {
 	Menus getMenusByName(String name);
 	
 	Menus getMenusById(int id);
+	/**
+	 * 
+	 * 方法描述：删除菜品
+	 * @param id
+	 * @return 影响行数
+	 */
+	int deleMenus(int id);
+	
+	/**
+	 * 
+	 * 方法描述：修改菜品
+	 * @param menus
+	 * @return 影响行数
+	 */
+	int updateMenus(Menus menus);
 }
