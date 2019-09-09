@@ -52,7 +52,7 @@
 			<td valign="top" bgcolor="#F7F8F9">
 				<p>修改菜单</p>
 				<div align="center">
-					<form action="${pageContext.request.contextPath}/menusServlet?action=updateMenu" method="post"
+					<form action="${pageContext.request.contextPath}/menusServlet?action=update" method="post"
 						name="form1" onSubmit="return verifyInfo()" enctype=" multipart/form-data">
 						<table id="table2" class="line_table"
 							style="width: 100%; margin: 0; padding: 0" cellSpacing="0"
@@ -109,17 +109,12 @@
 										</c:forEach>
 								</select></td>
 							</tr>
-							<tr>
-								<td class="line_table" align="right" width="20%"><span
-									class="left_bt2">展示图片</span>：</td>
-								<td class="line_table" width="80%" align="left"><img
-									src="${pageContext.request.contextPath}/${requestScope.menu.imgpath}"></td>
-							</tr>
+							
 							<tr>
 								<td class="line_table" height="25" align="right" width="20%"><span
 									class="left_bt2">上传图片：</span></td>
-								<td class="line_table" height="25" width="80%"><input
-									type="file" name="img" size="50"></td>
+								<td class="line_table" height="25" width="80%"><img src="${pageContext.request.contextPath }/${menus.imgpath }">&nbsp;&nbsp;&nbsp;
+								<input type="file" name="img" size="50"></td>
 							</tr>
 
 							<tr>
