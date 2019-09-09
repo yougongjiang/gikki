@@ -170,14 +170,22 @@ public class MenusServlet extends HttpServlet {
 			String price1=smartUpload.getRequest().getParameter("price1");
 			String brief=smartUpload.getRequest().getParameter("brief");
 			String typeid=smartUpload.getRequest().getParameter("typeid");
+			int id1=Integer.parseInt(id);
 			//获取上传文件
 			SmartFile file=smartUpload.getFiles().getFile(0);//从上传文件中获取第一个
-			//获取文件名
-			String imgpath="img/"+file.getFileName();
+			String imgpath;
+			if(file.getFileName().length()!=0){
+				//获取文件名
+				imgpath="img/"+file.getFileName();
+			}else{
+			
+				Menus menus=menusService.getMenusById(id1);
+				imgpath=menus.getImgpath();
+			}
 			if(id==null||id.equals("")){
 				id="0";
 			}
-			int id1=Integer.parseInt(id);
+	
 			Menus menus=new Menus(id1,name, typeid, burden, brief, price, price1, imgpath);
 			int result=menusService.updateMenus(menus);
 			if(result==1){
