@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*,java.text.*" pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <title>菜品展示</title>
@@ -39,31 +40,31 @@
 		<tr>
 			<td  class="line_table" height="25" align="right" width="20%"><span class="left_bt2">菜单名称：</span></td>
 			<td class="line_table" height="25"  width="70%">
-			<input type="text" name="name" size="45" readonly value="糖醋排骨"></td>
+			<input type="text" name="name" size="45" value="${requestScope.menus.name}></td>
 		</tr>
 		<tr>
 			<td  class="line_table" height="25"  align="right" width="20%"><span class="left_bt2">原&nbsp;&nbsp;&nbsp; 
 			料：</span></td>
 			<td class="line_table" height="25" width="80%">
-			<input type="text" name="burden" size="45" readonly value="排骨、糖、醋"></td>
+			<input type="text" name="burden" size="45" ${requestScope.menus.burden}"></td>
 		</tr>
 		<tr>
 			<td class="line_table" height="25"  align="right" width="20%"><span class="left_bt2">市场单
 			价：</span></td>
 			<td height="25"  width="80%">
-			<input type="text" name="price" size="45" readonly value="26.0"></td>
+			<input type="text" name="price" size="45" ${requestScope.menus.price}></td>
 		</tr>
 		<tr>
 			<td class="line_table" height="25"  align="right" width="20%"><span class="left_bt2">会员单
 			价：</span></td>
 			<td height="25"  width="80%">
-			<input type="text" name="price1" size="45" readonly value="24.0"></td>
+			<input type="text" name="price1" size="45" ${requestScope.menus.price1}></td>
 		</tr>
 		<tr>
 			<td class="line_table"  height="25"  align="right" width="20%"><span class="left_bt2">说&nbsp;&nbsp;&nbsp; 
 			明：</span></td>
 			<td class="line_table" height="25"  width="80%">
-			<textarea rows="12" name="brief" cols="100" readonly>暂无</textarea></td>
+			<textarea rows="12" name="brief" cols="100" >${requestScope.menus.brief}</textarea></td>
 		</tr>
 		<tr>
 			<td  class="line_table" height="25"  align="right" width="20%"><span class="left_bt2">菜品类别：</span></td>
@@ -74,7 +75,7 @@
 		<tr>
 			<td class="line_table" align="right" width="20%">
 			<span class="left_bt2">展示图片</span>：</td>
-			<td  class="line_table" width="80%" align="left"><img src="../img/m_tangcupaigu.gif"></td>
+			<td  class="line_table" width="80%" align="left"><img src="${requestScope.menus.imgpath}"></td>
 		</tr>
 
 		<tr>
