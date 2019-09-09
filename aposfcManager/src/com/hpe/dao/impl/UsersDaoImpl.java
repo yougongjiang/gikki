@@ -39,16 +39,16 @@ public class UsersDaoImpl implements IUsersDao {
 	}
 	
 	public int update(Users user) {
-		String sql="update users set name=?,pwd=? where id=?";
-		Object[] param={user.getName(),user.getPwd(),user.getId()};
-		int result=0;
-		try {
-			result = dbutil.execute(sql, param);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+		String sql ="update users set name=?, pwd=?,realname=?,sex=?,age=?,card=?,address=?,phone=?,email=?,code=? where name=?";
+		Object[] objects={ user.getName(), user.getPwd(), user.getRealname(), user.getSex(), user.getAge(),
+				user.getCard(), user.getAddress(), user.getPhone(), user.getEmail(), user.getCode(),user.getName()};
+		int temp = 0;
+			try {
+				temp = dbutil.execute(sql, objects);
+			} catch (Exception e) {
+				e.printStackTrace();
 		}
-		return result;
+		return temp;
 	}
 	
 	@Override
