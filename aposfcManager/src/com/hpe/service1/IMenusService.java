@@ -19,16 +19,21 @@ public interface IMenusService {
 	int addMenu(Menus menus);
 	Page getMenu(Page page);
 	Menus getMenuById(int id);
-	/** 
-	 * 方法描述：
+	/**
+	 * 
+	 * 方法描述：删除菜品
 	 * @param menus
-	 * @return
+	 * @return 影响行数
 	 */
-	/** 
-	 * 方法描述：
-	 * @param page
-	 * @return
+	int deleMenus(int id);
+	
+	/**
+	 * 
+	 * 方法描述：修改菜品
+	 * @param id
+	 * @return 影响行数
 	 */
+	int updateMenus(Menus menus);
 	
 	
 	
