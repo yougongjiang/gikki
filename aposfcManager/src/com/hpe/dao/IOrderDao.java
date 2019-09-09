@@ -35,4 +35,11 @@ public interface IOrderDao {
 	Page getOrderSearch(Page page,OrdersInfo ordersInfo);
 	//分布式查询订单
 	Page query(Page page,OrdersInfo orderInfo);
+		/**
+	 * 
+	 * 方法描述：改变派送状态
+	 * @param id
+	 * @return 影响的行数
+	 */
+	int changeDelivery(int id);	
 }
