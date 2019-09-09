@@ -18,4 +18,11 @@ import com.hpe.pojo.Users;
 public interface UsersService {
 	Users login(String name,String pwd);
 	int update(Users user);
+	/**
+	 * 
+	 * 方法描述：注册
+	 * @param users
+	 * @return 影响行数
+	 */
+	int reg(Users users);
 }
