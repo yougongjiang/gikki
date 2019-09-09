@@ -63,8 +63,7 @@ body {
 							
 							<tr>
 								<td class="line_table" align="center" colspan="8"><span
-									class="left_bt2">本日销售总额：<c:out value="${requestScope.salas }"></c:out>元
-									
+									class="left_bt2">本日销售总额：${money}元
 								</span></td>
 							</tr>
 						<tr>
