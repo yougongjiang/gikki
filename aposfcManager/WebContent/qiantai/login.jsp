@@ -73,7 +73,7 @@
               <div style="width:290px;padding:20px;float:right;text-align:left;border:1px #f59d5e solid;background-color:#ffffff;">
                 <ul style="margin:0px;padding:0px">
                   <li style=" list-style-type: none;line-height:30px; background:url(qiantai/images/cateitems.gif) left no-repeat;padding-left:20px"> 如果您已经是会员，请在左侧登录 </li>
-                  <li style="list-style-type: none;line-height:30px; background:url(qiantai/images/cateitems.gif) left no-repeat;padding-left:20px"> 如果您还没有注册会员，<a href="reg.jsp" target="_self"><font color="#FF6600">点这里注册新会员</font></a></li>
+                  <li style="list-style-type: none;line-height:30px; background:url(qiantai/images/cateitems.gif) left no-repeat;padding-left:20px"> 如果您还没有注册会员，<a href="${pageContext.request.contextPath }\qiantai\reg.jsp" target="_self"><font color="#FF6600">点这里注册新会员</font></a></li>
                   <li style="list-style-type: none;line-height:30px; background:url(qiantai/images/cateitems.gif) left no-repeat;padding-left:20px"> 如果您忘记了密码， <a href="../member/lostpass.php" ><font color="#99CC00">点这里重设一个密码</font></a></li>
                 </ul>
               </div>
