@@ -130,25 +130,25 @@ body {
 								<c:choose>
 								<c:when test="${page.curPage eq 1}"><span style="color: gray; font-size: 12px;">[首页]</span></c:when>
 								<c:otherwise>
-								    <a href="${requestScope.pageUrl}&curpage=1">[首页]</a>
+								    <a href="${page.context.request.contextPath}&curpage=1">[首页]</a>
 								    </c:otherwise>
 								    </c:choose>
 								    <c:choose>
-								    <c:when test="${page.curPage eq page.totalPage}"><span style="color: gray;font-size: 12px;">[尾页]</span></c:when>
+								    <c:when test="${page.curPage eq page.totalPage}/orderServlet?action=search&&curPage=1&&userid=${requestScope.ordersInfo.userid}&&menuname=${requestScope.ordersInfo.menuname}&&date=${requestScope.ordersInfo.date}"><span style="color: gray;font-size: 12px;">[尾页]</span></c:when>
 								    <c:otherwise>
-								    <a href="${requestScope.pageUrl}&curpage=${page.totalPage}">[尾页]</a>&nbsp;&nbsp; 
+								    <a href="${requestScope.pageUrl}&curpage=${page.totalPage}&&userid=${requestScope.ordersInfo.userid}&&menuname=${requestScope.ordersInfo.menuname}&&date=${requestScope.ordersInfo.date}">[尾页]</a>&nbsp;&nbsp; 
 								    </c:otherwise>
 								    </c:choose>
 								    <c:choose>
 								    <c:when test="${page.curPage eq 1}"><span style="color: gray;font-size: 12px;">[上一页]</span></c:when>
 								    <c:otherwise>
-								    <a href="${requestScope.pageUrl}&curpage=${page.curPage-1}">[上一页]</a>
+								    <a href="${requestScope.pageUrl}&curpage=${page.curPage-1}&&userid=${requestScope.ordersInfo.userid}&&menuname=${requestScope.ordersInfo.menuname}&&date=${requestScope.ordersInfo.date}">[上一页]</a>
 								    </c:otherwise>
 								    </c:choose>
 								    <c:choose>
 								     <c:when test="${page.curPage eq page.totalPage}"><span style="color: gray;font-size: 12px;">[下一页]</span></c:when>
 								     <c:otherwise>
-									<a href="${requestScope.pageUrl}&curpage=${page.curPage+1}">[下一页]</a>
+									<a href="${requestScope.pageUrl}&curpage=${page.curPage+1}&&userid=${requestScope.ordersInfo.userid}&&menuname=${requestScope.ordersInfo.menuname}&&date=${requestScope.ordersInfo.date}">[下一页]</a>
 									</c:otherwise>
 									</c:choose>
 								</td>
