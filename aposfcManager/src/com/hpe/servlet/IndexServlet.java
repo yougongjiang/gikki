@@ -41,6 +41,18 @@ public class IndexServlet extends HttpServlet {
 		}else {
 			curPageStr=Integer.parseInt(curPage);
 		}
+				// 创建page
+		Page page = new Page();
+		page.setCurPage(curPageStr);
+		page.setPageNumber(6);
+		// 调用查询方法
+		page = menusService.getMenus(page);
+		// 放到request中
+		request.setAttribute("page", page);
+		List<HotSellItem> hotList=hotSellItemService.getHotSell();
+		request.setAttribute("hotList", hotList);
+		request.getRequestDispatcher("/qiantai/index.jsp").forward(request, response);
+
 	}
 
 	
