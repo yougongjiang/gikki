@@ -51,7 +51,35 @@ public class UsersDaoImpl implements IUsersDao {
 		return result;
 	}
 	
+	@Override
+	public int reg(Users users) {
+		String sql="insert into users(`name`,pwd,realname,sex,age,card,address,phone,email,code) values(?,?,?,?,?,?,?,?,?,?)";
+		Object[] param={users.getName(),users.getPwd(),users.getRealname(),users.getSex(),users.getAge(),
+				users.getCard(),users.getAddress(),users.getPhone(),users.getEmail(),users.getCode()};
+		int result=0;
+		try {
+			result=dbutil.execute(sql, param);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public Users findByName(String name) {
+		String sql="select * from users where name=?";
+		Object[] param={name};
+		Users user=null;
+		try {
+			user=(Users) dbutil.getObject(Users.class, sql, param);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		return user;
+	}	
 	
 
 }
