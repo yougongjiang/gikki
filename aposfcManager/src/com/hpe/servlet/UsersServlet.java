@@ -59,7 +59,20 @@ public class UsersServlet extends HttpServlet {
 			login(request,response);
 		}else if(action.equals("update")){
 			update(request, response);
+		}else if (action.equals("logout")) {
+			// 退出
+			logout(request, response);
 		}
+	}
+	protected void logout(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		// 清除session，跳转登录页
+		session.removeAttribute("user");
+		out.write("<script>" + "alert('恭喜你,退出成功');" + "window.location.href='" + request.getContextPath()
+				+ "/shoppingCartServlet?action=delAll';" + "</script>");
+
 	}
 	protected void login(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 		PrintWriter out=response.getWriter();
