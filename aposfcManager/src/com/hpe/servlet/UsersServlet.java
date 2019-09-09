@@ -64,6 +64,51 @@ public class UsersServlet extends HttpServlet {
 			logout(request, response);
 		}
 	}
+	肖晓(1531310759) 2019/9/9 11:27:16
+
+//注册
+	protected void reg(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out=response.getWriter();
+		
+		//获取注册信息
+		String name=request.getParameter("name");
+		String pwd=request.getParameter("pwd");
+		String qpwd=request.getParameter("qpwd");
+		String realname=request.getParameter("realname");
+		String sex=request.getParameter("sex");
+		String age=request.getParameter("age");
+		String card=request.getParameter("card");
+		String address=request.getParameter("address");
+		String phone=request.getParameter("phone");
+		String email=request.getParameter("email");
+		String code=request.getParameter("code");
+		
+		Users user=new Users(name,qpwd,realname,sex,age,card,address,phone,email,code);
+		int result=usersService.reg(user);
+		if(result==1){
+			out.write("<script>"
+					+"alert('注册成功!');"
+					+"window.location.href='"+request.getContextPath()+"/qiantai/login.jsp';"
+					+"</script>");
+			}else if(result==-1){
+				out.write("<script>"
+					    +"alert('用户名重复!');"
+						+"window.location.href='"+request.getContextPath()+"/qiantai/reg.jsp';"
+						+"</script>");
+			}else{
+				out.write("<script>"
+						+"alert('注册失败!');"
+						+"window.location.href='"+request.getContextPath()+"/qiantai/reg.jsp';"
+						+"</script>");
+				}
+	}
+
+肖晓(1531310759) 2019/9/9 11:27:34
+else if(action.equals("reg")){
+			reg(request, response);
+		}
+
+
 	protected void logout(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
