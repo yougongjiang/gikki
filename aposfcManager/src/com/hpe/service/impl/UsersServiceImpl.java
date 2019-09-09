@@ -33,6 +33,15 @@ public class UsersServiceImpl implements UsersService {
 	
 		return  usersDao.update(user);
 	}
-
+	@Override
+	public int reg(Users users) {
+		Users user=usersdao.findByName(users.getName());
+		if(user!=null){
+			//用户名重复
+			return -1;
+		}else{
+			return usersdao.reg(users);
+		}
+	}
 	
 }
