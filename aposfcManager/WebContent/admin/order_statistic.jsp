@@ -46,18 +46,19 @@ body {
 									class="left_bt2">合计</span></td>
 							</tr>
 
-                             <c:forEach items="${requestScope.page.list }" var="order">
+                            <c:forEach items="${list}" var="menu">
 							<tr>
 								<td class="line_table" align="center" width="25%"><span
-									class="left_txt">${order.menuname }	</span></td>
+									class="left_txt">${menu.menuname}	</span></td>
 								<td class="line_table" align="center" width="25%"><span
-									class="left_txt">${order.menusum }</span></td>
+									class="left_txt">
+									<fmt:formatNumber type="number" value="${menu.sum }" maxFractionDigits="0"/></span></td>
 								<td class="line_table" align="center" width="25%"><span
-									class="left_txt">${order.price }</span></td>
+									class="left_txt">${menu. price}</span></td>
 								<td class="line_table" align="center" width="25%"><span
-									class="left_txt">${order.menusum*order.price }</span></td>
+									class="left_txt">${menu.total }元</span></td>
 							</tr>
-                           </c:forEach>
+							</c:forEach>
 						
 							
 							<tr>
