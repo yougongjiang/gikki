@@ -164,9 +164,9 @@ H1 a {
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
         </table>
         <ul class="MM">
-          <li><a href="${pageContext.request.contextPath}/ordersServlet?action=all" target="main">销售订单信息列表</a></li>
-          <li><a href="${pageContext.request.contextPath}/ordersServlet?action=search" target="main">销售订单查询</a></li>
-          <li><a href="${pageContext.request.contextPath}/ordersServlet?action=salas" target="main">本日销售额统计</a></li>
+           <li><a href="ordersServlet?action=all" target="main">销售订单信息列表</a></li>
+          <li><a href="ordersServlet?action=search" target="main">销售订单查询</a></li>
+          <li><a href="ordersServlet?action=getMoneyAll" target="main">本日销售额统计</a></li>
         </ul>
       </div>
     </div>
