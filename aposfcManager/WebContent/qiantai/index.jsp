@@ -317,7 +317,7 @@
 																<div style="padding: px;">
 																	<c:forEach items="${requestScope.hotList }" var="hotList">
 																
-																		<li class="newslist_time2"><div class="time">已销售${hotList.sellnum}次</div>
+																		<li class="newslist_time2"><div class="time">已销售<fmt:formatNumber type="number" value="${hotList.sellnum}" maxFractionDigits="0"/> 次
 																			<a href="${pageContext.request.contextPath }/menusServlet?action=findHotById&&id=${hotList.id}" class="newslist_time2">${hotList.name}</a>
 															</c:forEach>
 																</div>
