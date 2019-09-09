@@ -51,7 +51,7 @@
 														
 														<c:forEach items="${page.data }" var="menu">
 															<div
-																style="margin-top: 10px; margin-left: 30px; float: left;">
+																style="margin-top: 10px; margin-left: 20px; float: left;">
 																<table>
 																	<tr>
 																		<td rowspan="5" class="bookPic"><img
@@ -77,7 +77,7 @@
 																		<td><span>${menu.typename}</span></td>
 																	</tr>
 																	<tr>
-																		<td colspan="2" style="height: 40px;"><a href="${pageContext.request.contextPath}/shoopingCarServlet?action=add&&menusid=${menu.id }">加入餐车</a></td>
+																		<td colspan="2" style="height: 40px;"><a href="${pageContext.request.contextPath}/shoopingCarServlet?action=add&&menusid=${menu.id }&&pageIndex=${page.curPage}">加入餐车</a></td>
 																		<td></td>
 																	</tr>
 																</table>
@@ -228,20 +228,18 @@
 																		<td align="center"></td>
 																	</tr>
 
+																	<c:forEach items="${sessionScope.shoppingCart }" var="cart">
 																	<tr>
-																		<td align="center">糖醋排骨</td>
-																		<td align="center">24.0</td>
-																		<td align="center">2</td>
+																		<td align="center">${cart.name }</td>
+																		<td align="center">${cart.price }</td>
+																		<td align="center">${cart.sum }</td>
 																		<td align="center"><a
-																			href="#">取消</a></td>
+																			href="shoppingCartServlet?action=delCart&&menuid=${cart.menuid }&&pageIndex=${page.curPage}">取消</a></td>
 																	</tr>
-																	<tr>
-																		<td align="center">水煮鱼</td>
-																		<td align="center">32.0</td>
-																		<td align="center">1</td>
-																		<td align="center"><a
-																			href="#">取消</a></td>
-																	</tr>
+																	<c:set var="count" value="${count+cart.sum }"></c:set>
+																	<c:set var="sum" value="${sum+cart.sum*cart.price }"></c:set>
+																	</c:forEach>
+
 
 																</table>
 																<div style="height: 24px; margin: 5px 3px 1px 3px;">
@@ -249,11 +247,11 @@
 																		style="float: left; line-height: 24px; padding-left: 25px;">小&nbsp;&nbsp;计：</div>
 																	<div
 																		style="float: right; line-height: 24px; padding-right: 15px;">
-																		<font id="allnums" style="color: #ff0000;">3</font>份
+																		<font id="allnums" style="color: #ff0000;">${count }</font>份
 																	</div>
 																	<div
 																		style="float: right; line-height: 24px; padding-right: 30px;">
-																		<font id="cpprice" style="color: #ff0000;">56.0</font>元
+																		<font id="cpprice" style="color: #ff0000;">${sum }</font>元
 																	</div>
 																</div>
 																<div style="height: 30px; margin: 5px 3px 1px 3px;">
@@ -261,10 +259,10 @@
 																		<tr>
 																			<td align="center" width="40%"></td>
 																			<td align="center" width="40%"><a
-																				href="#"><img
+																				href="userOrderServlet?action=addOrder"><img
 																					src="qiantai/images/canche_submit.gif" border="0" /></a></td>
 																			<td align="center" width="40%"><a
-																				href="#"><img
+																				href="shoppingCartServlet?action=delAll"><img
 																					src="qiantai/images/quxiao2.gif" border="0" /></a></td>
 																		</tr>
 																	</table>
@@ -316,14 +314,11 @@
 																	<div id="dingcanweekmenu_top_right">&nbsp;</div>
 																</div>
 																<div style="padding: px;">
-																	<div class="dingcanweekmenuinfo" align="left">
-																		<li class="newslist_time2"><div class="time">已销售4次</div>
-																			<a href="#" class="newslist_time2">糖醋排骨</a></li>
-																		<li class="newslist_time2"><div class="time">已销售4次</div>
-																			<a href="#" class="newslist_time2">咸肉菜饭</a></li>
-																		<li class="newslist_time2"><div class="time">已销售1次</div>
-																			<a href="#" class="newslist_time2">水煮鱼</a></li>
-																	</div>
+																	<c:forEach items="${requestScope.hotList }" var="hotList">
+																
+																		<li class="newslist_time2"><div class="time">已销售${hotList.sellnum}次</div>
+																			<a href="${pageContext.request.contextPath }/menusServlet?action=findHotById&&id=${hotList.id}" class="newslist_time2">${hotList.name}</a>
+															</c:forEach>
 																</div>
 															</div>
 														</div>
