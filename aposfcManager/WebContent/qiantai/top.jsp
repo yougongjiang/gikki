@@ -32,7 +32,7 @@
 
 								<a href="qiantai/login.jsp" target="_self">会员登录</a>| 
 								<a href="reg.jsp" target="_self">会员注册</a>| 
-								<a href="#">注销退出</a>| 
+								<a href="usersServlet?action=logout">注销退出</a>| 
 								<a href="qiantai/carry.jsp" target="_self">配送说明</a>| 
 								<a href="qiantai/our.jsp" target="_self">关于我们</a>
 							</div>
@@ -80,7 +80,7 @@
 
 										<li><a href="qiantai/our.jsp" target="_self">关于我们</a></li>
 
-										<li><a href="#">注销退出</a></li>
+										<li><a href="usersServlet?action=logout">注销退出</a></li>
 
 									</ul>
 								</div>
