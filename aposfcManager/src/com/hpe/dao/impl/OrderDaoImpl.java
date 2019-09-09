@@ -120,5 +120,43 @@ public class OrderDaoImpl implements IOrderDao {
 		}
 		return page1;
 	}
+	
+	public int deleteOrder(int id) {
+		String sql="delete from orders where id=?";
+		Object[] param={id};
+		int result = 0;
+		try {
+			result = dbutil.execute(sql, param);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+		public int changeDelivery(int id) {
+		String sql="UPDATE orders SET delivery = '1' WHERE id = ?";
+		Object[] param={id};
+		int result = 0;
+		try {
+			result = dbutil.execute(sql, param);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
+	
+	
+	public List<GetMoneyAll> getMoneyAll(String times) {
+		String sql=" SELECT m.name AS menuname, SUM(menusum) AS sum, price, SUM(menusum)*price AS total"
+                +" from menus m LEFT JOIN orders o ON m.id=o.menuid WHERE delivery='1' and times like ? "
+				+" GROUP BY menuname";
+		List list=null;
+		Object[] param={"%"+times+"%"};
+		try {
+			list = dbutil.getQueryList(GetMoneyAll.class, sql, param);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }
