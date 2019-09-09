@@ -40,6 +40,14 @@ public class OrdersServlet extends HttpServlet {
 		//判断action的值，决定调用什么方法
 		if(action.equals("search")){
 			search(request, response);
+		}else if (action.equals("all")) {
+			allOrders(request, response);
+		} else if (action.equals("delete")) {
+			deleteOrder(request, response);
+		} else if (action.equals("change")) {
+			changeDelivery(request, response);
+		} else if (action.equals("getMoneyAll")) {
+			getMoneyAll(request, response);
 		}
 	}
 	protected void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -70,6 +78,81 @@ public class OrdersServlet extends HttpServlet {
 		page=orderservice.getOrderSearch(page,ordersInfo);
 		request.setAttribute("page", page);
 		request.getRequestDispatcher("/admin/order_search.jsp").forward(request, response);
+	}	protected void getMoneyAll(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		GetMoneyAll get = new GetMoneyAll();
+		get.setTimes(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+		// 1.获取所有
+		List<GetMoneyAll> list = orderService.getMoneyAll(get.getTimes());
+		double money = 0;
+		for(GetMoneyAll m : list){
+			money += m.getTotal();
+		}
+		
+		// 2.放到request域中
+		request.setAttribute("money", money);
+		request.setAttribute("list", list);
+		// 3.转发给jsp界面
+		request.getRequestDispatcher("/admin/order_statistic.jsp").forward(request, response);
+	}
+
+	protected void changeDelivery(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		// 获取订单编号
+		int id = Integer.parseInt(request.getParameter("id"));
+		String curPage = request.getParameter("curPage");// 当前页码
+		// 调用service修改方法
+		int result = orderService.changeDelivery(id);
+		if (result == 1) {
+			out.write("<script>" + "alert('派送成功！');" + "window.location.href='" + request.getContextPath()
+					+ "/ordersServlet?action=all&&curPage=" + curPage + "';" + "</script>");
+
+		} else {
+			out.write("<script>" + "alert('派送失败！');" + "window.location.href='" + request.getContextPath()
+					+ "/ordersServlet?action=all';" + "</script>");
+
+		}
+	}
+
+	protected void deleteOrder(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		// 获取订单编号
+		int id = Integer.parseInt(request.getParameter("id"));
+		String curPage = request.getParameter("curPage");// 当前页码
+		// 调用service修改方法
+		int result = orderService.deleteOrder(id);
+		if (result == 1) {
+			out.write("<script>" + "alert('删除成功！');" + "window.location.href='" + request.getContextPath()
+					+ "/ordersServlet?action=all&&curPage=" + curPage + "';" + "</script>");
+
+		} else {
+			out.write("<script>" + "alert('删除失败！');" + "window.location.href='" + request.getContextPath()
+					+ "/ordersServlet?action=all';" + "</script>");
+
+		}
+
+	}
+
+	protected void allOrders(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String curPage = request.getParameter("curPage");// 当前页码
+		int curPageStr = 0;
+		if (curPage == null || curPage.equals("")) {
+			curPageStr = 1;
+		} else {
+			curPageStr = Integer.parseInt(curPage);
+		}
+		// 创建page
+		Page page = new Page();
+		page.setCurPage(curPageStr);
+		page.setPageNumber(6);
+		// 调用service查询方法
+		page = orderService.AllOrders(page);
+		// 放到request域中
+		request.setAttribute("page", page);
+		request.getRequestDispatcher("/admin/order.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
