@@ -24,3 +24,22 @@ public interface IOrderService {
 	Page getOrderSearch(Page page,OrdersInfo orderInfo);
 
 }
+	@Override
+	public int deleteOrder(int id) {
+		// TODO Auto-generated method stub
+		return orderDao.deleteOrder(id);
+	}
+
+	
+	@Override
+	public int changeDelivery(int id) {
+		// TODO Auto-generated method stub
+		return orderDao.changeDelivery(id);
+	}
+
+
+	@Override
+	public List<GetMoneyAll> getMoneyAll(String times) {
+		// TODO Auto-generated method stub
+		return orderDao.getMoneyAll(times);
+	}
