@@ -33,6 +33,13 @@ public interface IOrderDao {
 	 */
 	
 	Page getOrderSearch(Page page,OrdersInfo ordersInfo);
+	/**
+	 * 
+	 * 方法描述：取消即删除订单(后台)
+	 * @param id
+	 * @return 影响的行数
+	 */
+	int deleteOrder(int id);
 	//分布式查询订单
 	Page query(Page page,OrdersInfo orderInfo);
 		/**
@@ -42,4 +49,11 @@ public interface IOrderDao {
 	 * @return 影响的行数
 	 */
 	int changeDelivery(int id);	
+		/**
+	 * 
+	 * 方法描述：本日销售统计
+	 * @param getMoneyAll
+	 * @return 所有类别信息
+	 */
+	List<GetMoneyAll> getMoneyAll(String times);
 }
