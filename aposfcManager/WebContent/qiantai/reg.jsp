@@ -10,12 +10,12 @@
 	function verifyInfo() {
 		//用户名
 		if(!verifyUserName(document.form1.name.value)) {
-			alert("请按要求填写用户名");
+			alert("请按要求填写用户名,用户名组成为字母6-20位");
 			return false;
 		}
 		//密码
 		if(!verifyPwd(document.form1.pwd.value)) {
-			alert("请按照要求填写密码");
+			alert("请按照要求填写密码,,密码组成为字母或数字，6-20位");
 			return false;
 		}
 		//两次密码相同
@@ -79,7 +79,7 @@
   <tr>
     <td align="center" valign="center" height="450">
     
- <form action="./index.jsp" name="form1" method="post" onsubmit="return verifyInfo()">
+ <form action="${pageContext.request.contextPath }/usersServlet?action=reg" name="form1" method="post" onsubmit="return verifyInfo()">
 
   <div align="center"><br>
   <table border="1" cellspacing="0" bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0" width="700">
