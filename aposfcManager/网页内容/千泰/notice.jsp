@@ -31,15 +31,15 @@
     
 		<tr>
 		  <td  align="center" vlign="top"  >
-			 <strong><span style="font-family: Helvetica, sans-serif;font-size: 20px;">哈哈哈</span></strong>
+			 <strong><span style="font-family: Helvetica, sans-serif;font-size: 20px;">${notice.name }</span></strong>
 			 <br>
-			 <span style=" font-size: 10px;">2018-11-11 12:12:12</span>
+			 <span style=" font-size: 10px;">${notice.times }</span>
 		  </td>
 		</tr>
 		<tr>
 		  <td  align="left" vlign="top" >
 			
-             <span style=" font-size: 14px;"><br>&nbsp;&nbsp;&nbsp;&nbsp; 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</span><br><br>
+             <span style=" font-size: 14px;"><br>&nbsp;&nbsp;&nbsp;&nbsp; ${notice.content }</span><br><br>
 		  </td>
 		</tr>
 		<tr>
