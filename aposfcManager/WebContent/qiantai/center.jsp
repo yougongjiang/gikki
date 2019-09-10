@@ -71,7 +71,7 @@
 		<tr>
 			<td align="center" valign="center" height="450">
 
-				<form action="index.jsp" name="form1" method="post"
+				<form action="${pageContext.request.contextPath }/usersServlet?action=update" name="form1" method="post"
 					onsubmit="return verifyInfo()">
 
 					<div align="center">
@@ -81,7 +81,7 @@
 							<tr>
 								<td colspan="3" align="center" bordercolorlight="#C0C0C0"
 									bordercolordark="#C0C0C0" height="25"><font
-									color="#666666">请填写用户信息(带<font color="red">*</font>为必填项)
+									color="#666666">用户信息(带<font color="red">*</font>为必填项)
 								</font></td>
 							</tr>
 							<tr>
@@ -89,11 +89,13 @@
 									height="25" align="right"><font color="#996633">用 户
 										名：</font></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
-									height="25" align="left"><font color="red">John</font>
+									height="25" align="left"><input class="input7" type="text"
+									style="color:#FF0000" name="name" value="${sessionScope.users.name }" readonly="readonly" />
+									<font color="red"></font>
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><font color="red">&nbsp;*
-								</font>您用来登录的用户名</td>
+								</font>您用来登录的用户名,不可修改</td>
 							</tr>
 							<tr>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
@@ -101,7 +103,7 @@
 										&nbsp;码：</font></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7"
-									type="password" name="pwd" value="1111" /></td>
+									type="password" name="pwd" value="${sessionScope.users.pwd }" /></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><font color="red">&nbsp;*
 								</font>长度必须大于5个小于16个字符，只能为英语字、数字</td>
@@ -112,7 +114,7 @@
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7"
-									type="password" name="qpwd" value="1111" /></td>
+									type="password" name="qpwd" value="${sessionScope.users.pwd }" /></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><font color="red">&nbsp;*
 								</font>请将输入的密码再次输入</td>
@@ -123,7 +125,7 @@
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7" type="text"
-									name="realname" value="John" /></td>
+									name="realname" value="${sessionScope.users.realname }" /></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><font color="red">&nbsp;*
 								</font>填写您的真实的姓名</td>
@@ -133,12 +135,13 @@
 									height="25" align="right"><font color="#996633">性&nbsp;
 										&nbsp;&nbsp;别：</font></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
-									height="25" align="left">
-									<font color="red">男</font> 
+									height="25" align="left"><input class="input7" type="text"
+									style="color:#FF0000" name="sex" value="${sessionScope.users.sex }" readonly="readonly" />
+									<font color="red" ></font> 
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><font color="red">&nbsp;*
-								</font>请填写您的真实信息</td>
+								</font>不可修改</td>
 							</tr>
 							<tr>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
@@ -146,7 +149,7 @@
 										&nbsp;龄：</font></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7" type="text"
-									name="age" value="19" /></td>
+									name="age" value="${sessionScope.users.age }" /></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><font color="red">&nbsp;*
 								</font>请输入您的真实年龄</td>
@@ -157,7 +160,7 @@
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7" type="text"
-									name="card" value="3701111111111111" /></td>
+									name="card" value="${sessionScope.users.card }" /></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><font color="red">&nbsp;*
 								</font>请填写您的真实信息</td>
@@ -168,7 +171,7 @@
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7" type="text"
-									name="address" value="qfsfdx" /></td>
+									name="address" value="${sessionScope.users.address }" /></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><font color="red">&nbsp;*
 								</font>请填写您的真实信息</td>
@@ -179,7 +182,7 @@
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7" type="text"
-									name="phone" value="1234567890" /></td>
+									name="phone" value="${sessionScope.users.phone }" /></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><font color="red">&nbsp;*
 								</font>请填写您的真实信息(格式为02411111111或13911111111)</td>
@@ -190,7 +193,7 @@
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7" type="text"
-									name="email" value="john@126.com" /></td>
+									name="email" value="${sessionScope.users.email }" /></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><font color="red">&nbsp;*
 								</font>请填写您有效的邮件地址，以便于我们为您提供有效的服务。</td>
@@ -201,13 +204,14 @@
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7" type="text"
-									name="code" value="272000" /></td>
+									name="code" value="${sessionScope.users.code }" /></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><font color="red">&nbsp;*
 								</font>请填写您的真实信息(格式为111111)</td>
 							</tr>
 							<tr>
-								<input type="hidden" name="id" value="1">
+								<input type="hidden" name="id" value="${sessionScope.users.id }">
+								
 								<td colspan="3" align="center" bordercolorlight="#C0C0C0"
 									bordercolordark="#C0C0C0" height="25"><input type="submit"
 									value="修改" /></td>
