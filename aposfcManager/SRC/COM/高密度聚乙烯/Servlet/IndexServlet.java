@@ -53,6 +53,8 @@ public class IndexServlet extends HttpServlet {
 		request.setAttribute("page", page);
 		List<HotSellItem> hotList=hotSellItemService.getHotSell();
 		request.setAttribute("hotList", hotList);
+		List<Notice> notice = noticeService.getNoticeAll();
+		request.setAttribute("noticelist", notice);
 		request.getRequestDispatcher("/qiantai/index.jsp").forward(request, response);
 
 	}
