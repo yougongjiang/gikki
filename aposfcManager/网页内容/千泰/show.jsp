@@ -67,12 +67,6 @@
 			<textarea rows="12" name="brief" cols="100" >${requestScope.menus.brief}</textarea></td>
 		</tr>
 		<tr>
-			<td  class="line_table" height="25"  align="right" width="20%"><span class="left_bt2">菜品类别：</span></td>
-			<td  class="line_table"  height="25"  width="80%">
-			<input type="text" name="type" size="45" readonly value="炒菜">
-			</td>
-		</tr>
-		<tr>
 			<td class="line_table" align="right" width="20%">
 			<span class="left_bt2">展示图片</span>：</td>
 			<td  class="line_table" width="80%" align="left"><img src="${requestScope.menus.imgpath}"></td>
