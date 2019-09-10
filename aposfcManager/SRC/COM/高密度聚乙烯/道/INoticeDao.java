@@ -20,7 +20,7 @@ public interface INoticeDao {
 	
 	/**
 	 * 
-	 * 方法描述：查询所有
+	 * 方法描述：后台查询所有
 	 * @return 所有公告信息
 	 */
 	List<Notice> getNoticeAll();
