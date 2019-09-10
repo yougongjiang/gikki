@@ -18,7 +18,7 @@ import com.hpe.util.Page;
  */
 public class OrdersQTServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IOrdersQTService ordersqtService = new OrdersQTServiceImpl();
+	private IOrderService ordersqtService = new OrderServiceImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
