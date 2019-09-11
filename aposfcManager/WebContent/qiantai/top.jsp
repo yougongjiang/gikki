@@ -74,7 +74,7 @@
 										<li><a href="qiantai/shoppingcar.jsp" target="_self">我的餐车</a></li>
 
 										<li><a href="${empty user ? 'login.jsp':'order.jsp' }" target="_self">我的订单</a></li>
-										<li><a href="qiantai/center.jsp" target="_self">用户中心</a></li>
+										<li><a href="${empty users ?'qiantai/login.jsp':'qiantai/center.jsp'}" target="_self">用户中心</a></li>
 
 										<li><a href="qiantai/carry.jsp" target="_self">配送说明</a></li>
 
