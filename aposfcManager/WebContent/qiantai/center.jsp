@@ -91,11 +91,10 @@
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7" type="text"
 									style="color:#FF0000" name="name" value="${sessionScope.users.name }" readonly="readonly" />
-									<font color="red"></font>
+									
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
-									height="25" align="left"><font color="red">&nbsp;*
-								</font>您用来登录的用户名,不可修改</td>
+									height="25" align="left"><font color="red">&nbsp;*您用来登录的用户名,不可修改</font ></td>
 							</tr>
 							<tr>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
@@ -125,10 +124,9 @@
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7" type="text"
-									name="realname" value="${sessionScope.users.realname }" /></td>
+									style="color:#FF0000" name="realname" value="${sessionScope.users.realname}" readonly="readonly" /></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
-									height="25" align="left"><font color="red">&nbsp;*
-								</font>填写您的真实的姓名</td>
+									height="25" align="left"><font color="red">&nbsp;*不可修改</font ></td>
 							</tr>
 							<tr>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
@@ -137,11 +135,10 @@
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7" type="text"
 									style="color:#FF0000" name="sex" value="${sessionScope.users.sex }" readonly="readonly" />
-									<font color="red" ></font> 
+									
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
-									height="25" align="left"><font color="red">&nbsp;*
-								</font>不可修改</td>
+									height="25" align="left"><font color="red">&nbsp;*不可修改</font ></td> 
 							</tr>
 							<tr>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
@@ -149,10 +146,9 @@
 										&nbsp;龄：</font></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7" type="text"
-									name="age" value="${sessionScope.users.age }" /></td>
+									style="color:#FF0000" name="age" value="${sessionScope.users.age }"  readonly="readonly"/></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
-									height="25" align="left"><font color="red">&nbsp;*
-								</font>请输入您的真实年龄</td>
+									height="25" align="left"><font color="red">&nbsp;*不可修改</font ></td>
 							</tr>
 							<tr>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
@@ -160,10 +156,10 @@
 								</td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
 									height="25" align="left"><input class="input7" type="text"
-									name="card" value="${sessionScope.users.card }" /></td>
+									style="color:#FF0000" name="card" value="${sessionScope.users.card }"  readonly="readonly"/></td>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
-									height="25" align="left"><font color="red">&nbsp;*
-								</font>请填写您的真实信息</td>
+									height="25" align="left">
+									<font color="red">&nbsp;*不可修改</font ></td>
 							</tr>
 							<tr>
 								<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0"
