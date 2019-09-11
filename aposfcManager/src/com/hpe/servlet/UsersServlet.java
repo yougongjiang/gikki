@@ -62,9 +62,46 @@ public class UsersServlet extends HttpServlet {
 		}else if (action.equals("logout")) {
 			// 退出
 			logout(request, response);
+		}else if(action.equals("update")){
+			update(request, response);
 		}
 	}
 	肖晓(1531310759) 2019/9/9 11:27:16
+protected void update(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+
+		String name = request.getParameter("name");
+		String pwd = request.getParameter("pwd");
+		String age = request.getParameter("age");
+		String realname = request.getParameter("realname");
+		String card = request.getParameter("card");
+		String address = request.getParameter("address");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		String code = request.getParameter("code");
+		String sex = request.getParameter("sex");
+		
+		Users user0=usersService.findByName(name);
+		String pwd0=user0.getPwd();//保留原密码
+		Users user = new Users(name, pwd, realname, sex, age, card, address, phone, email, code);
+		
+		int result = usersService.update(user);
+		if (result == 1) {
+			if(pwd0.equals(pwd)){
+				out.write("<script>" + "alert('恭喜您,修改成功!');" + "window.location.href='" + request.getContextPath()
+				+ "/qiantai/center.jsp';" + "</script>");
+			}else{
+				out.write("<script>" + "alert('密码有变动，请重新登录');" + "window.location.href='" + request.getContextPath()
+				+ "/qiantai/login.jsp';" + "</script>");
+			}
+			
+		} else if (result == -1) {
+			out.write("<script>" + "alert('对不起,修改未成功!');" + "window.location.href='"
+					+ request.getContextPath() + "/qiantai/center.jsp';" + "</script>");
+		} 
+
+	}
 
 //注册
 	protected void reg(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
