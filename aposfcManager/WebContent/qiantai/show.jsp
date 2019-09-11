@@ -36,41 +36,34 @@
 	
 
     <table id="table2"   class="line_table" style="width:100%;  margin: 0; padding: 0" cellSpacing="0" cellPadding="0">
-   
 		<tr>
 			<td  class="line_table" height="25" align="right" width="20%"><span class="left_bt2">菜单名称：</span></td>
 			<td class="line_table" height="25"  width="70%">
-			<input type="text" name="name" size="45" value="${requestScope.menus.name}></td>
+			<input type="text" name="name" size="45"  value="${requestScope.menus.name}"></td>
 		</tr>
 		<tr>
 			<td  class="line_table" height="25"  align="right" width="20%"><span class="left_bt2">原&nbsp;&nbsp;&nbsp; 
 			料：</span></td>
 			<td class="line_table" height="25" width="80%">
-			<input type="text" name="burden" size="45" ${requestScope.menus.burden}"></td>
+			<input type="text" name="burden" size="45"  value="${requestScope.menus.burden}"></td>
 		</tr>
 		<tr>
 			<td class="line_table" height="25"  align="right" width="20%"><span class="left_bt2">市场单
 			价：</span></td>
 			<td height="25"  width="80%">
-			<input type="text" name="price" size="45" ${requestScope.menus.price}></td>
+			<input type="text" name="price" size="45" value="${requestScope.menus.price}"></td>
 		</tr>
 		<tr>
 			<td class="line_table" height="25"  align="right" width="20%"><span class="left_bt2">会员单
 			价：</span></td>
 			<td height="25"  width="80%">
-			<input type="text" name="price1" size="45" ${requestScope.menus.price1}></td>
+			<input type="text" name="price1" size="45"  value="${requestScope.menus.price1}"></td>
 		</tr>
 		<tr>
 			<td class="line_table"  height="25"  align="right" width="20%"><span class="left_bt2">说&nbsp;&nbsp;&nbsp; 
 			明：</span></td>
 			<td class="line_table" height="25"  width="80%">
 			<textarea rows="12" name="brief" cols="100" >${requestScope.menus.brief}</textarea></td>
-		</tr>
-		<tr>
-			<td  class="line_table" height="25"  align="right" width="20%"><span class="left_bt2">菜品类别：</span></td>
-			<td  class="line_table"  height="25"  width="80%">
-			<input type="text" name="type" size="45" readonly value="炒菜">
-			</td>
 		</tr>
 		<tr>
 			<td class="line_table" align="right" width="20%">
@@ -83,10 +76,8 @@
 			<a href="index.jsp" target="_self"><input type="submit" value="返回"></a>
 			</td>
 		</tr>
-		
-    
-		</table>
 
+		</table>
   	</div>
     
     

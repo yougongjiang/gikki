@@ -30,7 +30,7 @@
 
 				<div align="center">
 
-					<form action="#" method="post"
+					<form action="${pageContext.request.contextPath}/noticeServlet?action=add" method="post"
 						name="form1" onSubmit="return verifyInfo()">
 
 

@@ -1,8 +1,10 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<base href="${pageContext.request.contextPath }/admin/">
 <link href="images/skin.css" rel="stylesheet" type="text/css" /> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
@@ -45,28 +47,18 @@ body {
 									class="left_bt2">发布时间</span></td>
 								<td class="line_table" align="center" width="10%"></td>
 							</tr>
-							
+							<c:forEach items="${requestScope.notice }" var="notice">
 							<tr>
 								<td class="line_table" align="center" width="20%"><span
-									class="left_txt">本店特色《咸菜肉饭》</span></td>
+									class="left_txt">${notice.name }</span></td>
 								<td class="line_table" align="center" width="40%"><span
-									class="left_txt">记得小时候每每妈妈做咸肉菜饭，我都要吃上二大碗，那个香啊那个好吃啊，真的不知道怎样来形容。吃过的朋友，大家都懂的，呵呵！</span></td>
+									class="left_txt">${notice.content }</span></td>
 								<td class="line_table" align="center" width="20%"><span
-									class="left_txt">2015-02-28 13:53:39</span></td>
+									class="left_txt">${notice.times }</span></td>
 								<td class="line_table" align="center" width="20%"><a
-									href="#">删除</a></td>
+									href="../noticeServlet?action=delete&&noticeid=${notice.id }">删除</a></td>
 							</tr>
-						
-							<tr>
-								<td class="line_table" align="center" width="20%"><span
-									class="left_txt">新增菜单《糖醋排骨》</span></td>
-								<td class="line_table" align="center" width="40%"><span
-									class="left_txt">糖醋排骨超级好吃。再挑食的小朋友都无法拒绝酸甜的口味，吃光排骨，再用糖醋汁拌米饭，今天的饭量见长。</span></td>
-								<td class="line_table" align="center" width="20%"><span
-									class="left_txt">2015-02-28 13:49:40</span></td>
-								<td class="line_table" align="center" width="20%"><a
-									href="#">删除</a></td>
-							</tr>
+						</c:forEach>
 					</table>
 				</div>
 

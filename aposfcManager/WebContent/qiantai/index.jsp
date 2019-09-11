@@ -16,10 +16,10 @@
 </head>
 
 <body style='background: transparent'>
-	<c:if test="${empty page }">
-	<jsp:forward page="../indexServlet?action=allInfo"></jsp:forward>
-	</c:if>
 	
+	<c:if test="${empty page }">
+	<jsp:forward page="../IndexServlet"></jsp:forward>
+	</c:if>
 	
 	<table width="900" border="0" align="center" cellpadding="0"
 		cellspacing="0">
@@ -50,7 +50,7 @@
 
 													<div id="mm_01" class="dingcanall_connow">
 														
-														<c:forEach items="${page.data }" var="menu">
+														<c:forEach items="${page.list }" var="menu">
 															<div
 																style="margin-top: 10px; margin-left: 20px; float: left;">
 																<table>
@@ -78,7 +78,7 @@
 																		<td><span>${menu.typename}</span></td>
 																	</tr>
 																	<tr>
-																		<td colspan="2" style="height: 40px;"><a href="${pageContext.request.contextPath}/shoopingCarServlet?action=add&&menusid=${menu.id }&&pageIndex=${page.curPage}">加入餐车</a></td>
+																		<td colspan="2" style="height: 40px;"><a href="shoppingCartServlet?action=add&&menuid=${menu.id }&&pageIndex=${page.curPage}">加入餐车</a></td>
 																		<td></td>
 																	</tr>
 																</table>
@@ -137,7 +137,7 @@
 									</div>
 								</div>
 							</div>
-							</td>
+							</div></td>
 						<td width="41%" align="right" valign="top"><table width="243"
 								border="0" cellspacing="0" cellpadding="0">
 								<tr>
@@ -167,15 +167,14 @@
 
 															<ul class="newslist_time2">
 																
+																<c:forEach items="${requestScope.noticelist }" var="notice">
 																
 																	<li class="newslist_time2">
-																		<div class="time">2005-01-01</div>
-																		<a href="#" class="newslist_time2">咸菜肉饭</a>
+																		<div class="time">${notice.times }</div>
+																		<a href="${pageContext.request.contextPath }/noticeServlet?action=findByName&&name=${notice.name}" class="newslist_time2">${notice.name }</a>
 																	</li>
-																	<li class="newslist_time2">
-																		<div class="time">2005-01-01</div>
-																		<a href="#" class="newslist_time2">咸菜肉饭</a>
-																	</li>
+																
+																</c:forEach>
 																
 																
 															</ul>
@@ -228,7 +227,6 @@
 																		<td align="center">数量</td>
 																		<td align="center"></td>
 																	</tr>
-
 																	<c:forEach items="${sessionScope.shoppingCart }" var="cart">
 																	<tr>
 																		<td align="center">${cart.name }</td>
@@ -241,6 +239,8 @@
 																	<c:set var="sum" value="${sum+cart.sum*cart.price }"></c:set>
 																	</c:forEach>
 
+											
+														
 
 																</table>
 																<div style="height: 24px; margin: 5px 3px 1px 3px;">
@@ -280,7 +280,7 @@
 												</div>
 											</div>
 										</div>
-										
+										</div>
 
 									</td>
 								</tr>
@@ -288,8 +288,7 @@
 									<td height="10">&nbsp;</td>
 								</tr>
 								<tr>
-									<td valign="top">
-									<div id='pdv_3613' class='pdv_class'
+									<td valign="top"><div id='pdv_3613' class='pdv_class'
 											title='本周菜单'
 											style='width: 243px; top: 0px; left: 0px; z-index: 5'>
 											<div id='spdv_3613' class='pdv_content'
@@ -315,13 +314,17 @@
 																	<div id="dingcanweekmenu_top_right">&nbsp;</div>
 																</div>
 																<div style="padding: px;">
-																	<c:forEach items="${requestScope.hotList }" var="hotList">
+																<c:forEach items="${requestScope.hotList }" var="hotList">
 																
-																		<li class="newslist_time2"><div class="time">已销售<fmt:formatNumber type="number" value="${hotList.sellnum}" maxFractionDigits="0"/> 次
+																		<li class="newslist_time2"><div class="time">已销售
+																		<fmt:formatNumber type="number" value="${hotList.sellnum}" maxFractionDigits="0"/> 次</div>
 																			<a href="${pageContext.request.contextPath }/menusServlet?action=findHotById&&id=${hotList.id}" class="newslist_time2">${hotList.name}</a>
 															</c:forEach>
 																</div>
+																
 															</div>
+															</div>
+															
 														</div>
 														<!--<div id="dingcanweekmenu_bottom_left"></div>
                     <div id="dingcanweekmenu_bottom_right">&nbsp;</div>-->
